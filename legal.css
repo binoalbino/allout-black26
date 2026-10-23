@@ -1,0 +1,71 @@
+/* ALL OUT | Aviso de Privacidade (usa tokens e fontes do style.css) */
+
+body { background: var(--white); color: var(--black); }
+
+.legal-header { background: var(--black); color: var(--white); padding: 32px 20px 36px; }
+.legal-header__inner { max-width: 960px; }
+.legal-header__logo { width: 118px; margin-bottom: 22px; }
+.legal-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(22px, 5vw, 36px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.legal-content { padding: 44px 20px 64px; }
+.legal-content .container { max-width: 960px; }
+
+.legal-content section { margin-bottom: 36px; }
+.legal-content h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(18px, 3.4vw, 24px);
+  line-height: 1.2;
+  color: var(--black);
+}
+.legal-content h2::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 4px;
+  margin-bottom: 12px;
+  background: var(--red);
+}
+.legal-content p {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--black);
+}
+.legal-content a { color: var(--red); word-break: break-word; }
+.legal-content a:hover { text-decoration: none; }
+
+.legal-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 8px 0 20px;
+  border: 1px solid var(--black);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.legal-table__item { padding: 16px 18px; }
+.legal-table__item + .legal-table__item { border-left: 1px solid var(--black); }
+.legal-table__item p { margin: 0; }
+.legal-table__label {
+  margin-bottom: 6px !important;
+  font-weight: 700;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--red) !important;
+}
+
+.legal-content .btn-cta--secondary { width: 100%; max-width: 280px; margin: 24px 0 0; height: 48px; font-size: 14px; border-radius: 6px; }
+
+@media (max-width: 640px) {
+  .legal-table { grid-template-columns: 1fr; }
+  .legal-table__item + .legal-table__item { border-left: 0; border-top: 1px solid var(--black); }
+}

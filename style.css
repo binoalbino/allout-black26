@@ -1,0 +1,343 @@
+/* ==========================================================================
+   ALL OUT | Grupo VIP | Black Friday 2026
+   Cores:  --black #1B1B1B  |  --red #EF3E34
+   Fontes: OBVIA Bold (títulos)  |  Avenir (textos e campos)
+   ========================================================================== */
+
+/* ---- Fontes ------------------------------------------------------------- */
+/* OBVIA Bold (arquivo que já existe na pasta /fonts do projeto) */
+@font-face {
+  font-family: "Obvia";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/fonnts.com-Obvia_Bold.otf") format("opentype");
+}
+
+/* Avenir (extraída do Avenir.ttc: Book, Medium e Heavy) */
+@font-face {
+  font-family: "Avenir";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/Avenir-Book.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Avenir";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/Avenir-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Avenir";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/Avenir-Heavy.woff2") format("woff2");
+}
+
+/* ---- Tokens ------------------------------------------------------------- */
+:root {
+  --black: #1B1B1B;
+  --red: #EF3E34;
+  --white: #FFFFFF;
+  --field: #FAF9F6;
+  --placeholder: #8A8A8A;
+
+  --font-head: "Obvia", "Archivo Black", "Arial Black", Impact, sans-serif;
+  --font-body: "Avenir", "Avenir Next", "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- Base --------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button, input { font: inherit; }
+
+.container { width: 100%; margin: 0 auto; }
+
+/* ---- Fundo da página (hero + benefícios) -------------------------------- */
+.page {
+  position: relative;
+  overflow: hidden;
+  background: var(--white) url("assets/bg-mobile2.png") center top / 100% auto no-repeat;
+}
+
+/* ---- Hero --------------------------------------------------------------- */
+.hero {
+  padding: 72vw 0 34px; /* proporcional ao bg-mobile2 (100% de largura): o texto sempre começa abaixo das corredoras */
+}
+.hero__content {
+  width: clamp(280px, 63vw, 420px);
+}
+
+.logo { width: 92px; height: auto; }
+
+.hero__title {
+  margin: 14px 0 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(25px, 7.3vw, 32px);
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .35);
+}
+.hero__title-highlight { display: block; color: var(--red); }
+
+.hero__lead {
+  margin: 12px 0 0;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .45);
+}
+
+.hero__features { margin: 18px 0 0; }
+.hero__features-img { width: 100%; }
+.hero__features-img--desktop { display: none; }
+
+/* ---- Formulário --------------------------------------------------------- */
+.vip-form { margin-top: 20px; }
+.field + .field { margin-top: 10px; }
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"] {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: var(--field);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px; /* 16px evita o zoom automático do iOS */
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field input::placeholder { color: var(--placeholder); font-weight: 400; opacity: 1; }
+.field input:focus { border-color: var(--red); }
+.field input.is-invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(239, 62, 52, .35); }
+
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  margin-top: 10px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.btn-cta:hover { background: var(--red); }
+.btn-cta:active { transform: translateY(1px); }
+.btn-cta:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.btn-cta[disabled] { opacity: .6; cursor: wait; }
+
+.form__note,
+.consent,
+.privacy-link {
+  font-weight: 500;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .55);
+}
+.form__note { margin: 16px 0 0; text-align: center; }
+
+.consent {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.consent input {
+  position: absolute;
+  opacity: 0;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.consent__box {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  border: 1.5px solid var(--white);
+  border-radius: 3px;
+  background: rgba(27, 27, 27, .35);
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.consent input:checked + .consent__box {
+  background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+  border-color: var(--red);
+}
+.consent input:focus-visible + .consent__box { outline: 3px solid var(--red); outline-offset: 2px; }
+.consent input.is-invalid + .consent__box { border-color: var(--red); box-shadow: 0 0 0 3px rgba(239, 62, 52, .45); }
+
+.privacy-link {
+  display: block;
+  margin-top: 4px;
+  padding-left: 24px;
+  text-decoration: none;
+}
+.privacy-link:hover { text-decoration: underline; }
+
+.form__status {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.form__status:not(:empty) {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-left: 4px solid var(--white);
+  border-radius: 4px;
+  background: rgba(27, 27, 27, .88);
+}
+.form__status.is-error { border-left-color: var(--red); }
+.form__status.is-success { border-left-color: #fff; }
+
+/* ---- Benefícios --------------------------------------------------------- */
+.hero, .benefits { position: relative; z-index: 1; }
+.benefits { padding: 0 0 56px; }
+.benefits .container { display: flex; flex-direction: column; align-items: center; }
+
+.benefits__image--mobile { display: block; width: clamp(250px, 58vw, 336px); }
+.benefits__image--desktop { display: none; }
+
+.btn-cta--secondary {
+  width: clamp(250px, 58vw, 336px);
+  margin-top: 28px;
+}
+
+/* ---- Rodapé ------------------------------------------------------------- */
+.site-footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 40px 20px 36px;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  max-width: 1068px;
+  text-align: center;
+}
+.logo--footer { width: 120px; }
+.footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; }
+.footer__links a,
+.back-to-top {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--white);
+  text-decoration: none;
+}
+.footer__links a:hover,
+.back-to-top:hover { color: var(--red); }
+.back-to-top { display: inline-flex; align-items: center; gap: 10px; }
+.back-to-top img { width: 32px; height: 32px; }
+
+/* ==========================================================================
+   Desktop
+   ========================================================================== */
+@media (min-width: 900px) {
+  .page {
+    background-image: url("assets/bg-desk3.png");
+    background-size: cover;
+    background-position: center top;
+  }
+  /* A página acompanha a altura do conteúdo (sem sobra). A fita BLACK FRIDAY do rodapé
+     da arte volta como uma faixa no fim da página, com transição suave para o fundo. */
+  .page::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 13vw;
+    background: url("assets/bg-desk3.png") center bottom / 100% auto no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero { padding: 68px 0 150px; }
+  .hero__content {
+    width: 391px;
+    margin: 0 0 0 calc((100% - min(1068px, 92vw)) / 2 + 48px);
+  }
+
+  .logo { width: 138px; }
+
+  .hero__title {
+    margin-top: 18px;
+    font-size: 50px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .hero__lead { margin-top: 22px; font-size: 15px; line-height: 1.25; }
+
+  .hero__features { margin-top: 26px; }
+  .hero__features-img--mobile { display: none; }
+  .hero__features-img--desktop {
+    display: block;
+    width: 764px;
+    max-width: none;
+    margin-left: -13px;
+  }
+
+  .vip-form { margin-top: 22px; }
+  .field + .field { margin-top: 10px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"] { height: 52px; }
+  .btn-cta { height: 52px; font-size: 15px; }
+  .form__note { margin-top: 24px; font-size: 12px; text-align: left; }
+  .consent { margin-top: 14px; font-size: 12px; }
+  .privacy-link { font-size: 12px; }
+
+  .benefits { padding-bottom: 7vw; }
+  .benefits__image--mobile { display: none; }
+  .benefits__image--desktop { display: block; width: min(1068px, 92vw); }
+
+  .btn-cta--secondary {
+    width: 445px;
+    height: 84px;
+    margin-top: 44px;
+    border-radius: 10px;
+    font-size: 22px;
+  }
+
+  .site-footer { padding: 48px 20px 44px; }
+  .footer__inner { flex-direction: row; justify-content: space-between; text-align: left; }
+}
