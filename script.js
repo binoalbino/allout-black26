@@ -62,6 +62,18 @@
     return { ok: true, digits: digits };
   }
 
+  /* ---- Meta Pixel: evento Lead (disparado só após o envio com sucesso) ---- */
+  function trackLead() {
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Grupo VIP Black Friday',
+          content_category: 'Formulario VIP'
+        });
+      }
+    } catch (err) { /* o Pixel nunca deve quebrar o fluxo do formulário */ }
+  }
+
   [nameEl, emailEl, phoneEl].forEach(function (el) {
     el.addEventListener('input', function () { mark(el, false); });
   });
@@ -101,6 +113,7 @@
     })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
+        trackLead();
         form.reset();
         setStatus('Cadastro enviado! Redirecionando para o grupo do WhatsApp...', 'success');
         setTimeout(function () { window.location.href = WHATSAPP_GROUP_URL; }, 1200);
